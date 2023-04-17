@@ -38,6 +38,24 @@
     <build>
         <plugins>
             <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <appName>${heroku.appName}</appName>
+                    <includeTarget>false</includeTarget>
+                    <includes>
+                        <include>target/${project.build.finalName}.jar</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
